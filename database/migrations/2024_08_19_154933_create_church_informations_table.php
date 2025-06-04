@@ -26,6 +26,10 @@ return new class extends Migration
             $table->string('acude_misa');
             $table->string('comulga_misa');
             $table->string('ultima_confecion');
+            $table->string('padecimiento_psico');
+            $table->string('medicamentos');
+            $table->string('enfermedad');
+            $table->string('embarazada');
             $table->boolean('brujeria');
             $table->boolean('santeria');
             $table->boolean('adivinacion');
@@ -33,8 +37,9 @@ return new class extends Migration
             $table->boolean('espiritimo');
             $table->boolean('curanderos');
             $table->boolean('reflexologia');
+            $table->boolean('esoterismo');
             $table->boolean('reiki');
-            $table->boolean('feng shui');
+            $table->boolean('feng_shui');
             $table->boolean('yoga');
             $table->boolean('ouija');
             $table->boolean('magia');

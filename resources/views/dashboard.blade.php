@@ -12,7 +12,7 @@
                     <div>
                         <h5 class="mb-0">Informacion</h5>
                     </div>
-                    <a href="{{ route('create-list') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nuevo</a>
+                    <a href="{{ route('create-list') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nuevo caso</a>
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -25,6 +25,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de nacimiento</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Telefono</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edad</th>
+                      <th class="text-secondary opacity-7"></th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -54,9 +55,35 @@
                                 <p class="text-xs font-weight-bold mb-0">{{ $identificacion->edad }}</p>
                             </td>
                             <td class="align-middle">
-                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                Edit
+                                <a class="btn btn-link text-dark px-3 mb-0" href="editar/{{ $identificacion->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                               <i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i> Editar
                                 </a>
+                            </td>
+                            <td class="align-middle ">
+                                <button type="button" class="btn btn-outline-primary mb-0" data-bs-toggle="modal" data-bs-target="#historial-{{ $identificacion->id }}">
+                                    Historial
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="historial-{{ $identificacion->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Historial del paciente</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-outline-primary " href="">Nuevo seguimiento</a>
+                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
                             </td>
                         @endforeach
                     </tr>

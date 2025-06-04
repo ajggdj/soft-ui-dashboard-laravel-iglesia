@@ -26,6 +26,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home'])->name('list');
     Route::get('crear', [HomeController::class, 'create'])->name('create-list');
+	Route::post('registrar', [HomeController::class, 'registrar'])->name('registrar-list');
+    Route::get('editar/{id}', [HomeController::class, 'editar'])->name('editar-list');
+    Route::post('editar/guardar/{id}', [HomeController::class, 'guardar'])->name('guardar-list');
+
+    Route::get('historial-paciente', [HomeController::class, 'historial'])->name('historial-paciente');
+
 
 	Route::get('dashboard', function () {
 		return view('dashboard');
