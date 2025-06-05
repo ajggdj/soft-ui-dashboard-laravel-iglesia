@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Church_information;
-
+use App\Models\historial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -197,7 +197,7 @@ class HomeController extends Controller
         $table->observaciones_sacerdote = $request->observaciones_sacerdote;
         $table->activo = 1;
         $table->save();
-        return view('dashboard.create');
+        return redirect('/');
     }
 
     public function editar(Request $request, $id){
@@ -383,10 +383,54 @@ class HomeController extends Controller
         $table->observaciones_sacerdote = $request->observaciones_sacerdote;
         $table->activo = 1;
         $table->save();
-        return redirect()->back();
+        return redirect('/');
     }
 
-    public function historial(){
-        return view('historial.index');
+    public function historial($id){
+        $historial = Historial::where('idinformacion',$id)->get();
+        return view('historial.listas',['historial'=> $historial]);
+    }
+
+    public function historialcrear($id){
+        $userid = $id;
+        return view('historial.index',['userid'=> $userid]);
+    }
+
+    public function historial_guardar(Request $request){
+        $table = new historial();
+        $table->idinformacion = $request->iglesia;
+        //ESTADO DE SALUD
+        if($request->padecimiento_psico == null){
+            $table->padecimiento_psico = 'N/A';
+        }else{
+            $table->padecimiento_psico = $request->padecimiento_psico;
+        }
+
+        if($request->medicamentos == null){
+            $table->medicamentos = 'N/A';
+        }else{
+            $table->medicamentos = $request->medicamentos;
+        }
+
+        if($request->enfermedad == null){
+            $table->enfermedad = 'N/A';
+
+        }else{
+            $table->enfermedad = $request->enfermedad;
+
+        }
+
+        if($request->embarazada == null){
+            $table->embarazada = 'null';
+        }else{
+            $table->embarazada = $request->embarazada;
+        }
+
+//MOTIVO DE SOLICITUD DE ORACIÓN
+        $table->observaciones_discernimiento = $request->observaciones_discernimiento;
+        $table->observaciones_sacerdote = $request->observaciones_sacerdote;
+        $table->activo = 1;
+        $table->save();
+        return redirect('/');
     }
 }

@@ -30,8 +30,9 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($church_information as $key => $identificacion)
                     <tr>
-                        @foreach ($church_information as $key => $identificacion)
+                        
                             <td>
                                 <div class="d-flex px-2 py-1">
                                 <div>
@@ -60,33 +61,14 @@
                                 </a>
                             </td>
                             <td class="align-middle ">
-                                <button type="button" class="btn btn-outline-primary mb-0" data-bs-toggle="modal" data-bs-target="#historial-{{ $identificacion->id }}">
+                                <a href="{{ route('historial-paciente',$identificacion->id) }}" class="btn btn-outline-primary mb-0">
                                     Historial
-                                </button>
-                                <!-- Modal -->
-                                <div class="modal fade" id="historial-{{ $identificacion->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title font-weight-normal" id="exampleModalLabel">Historial del paciente</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a class="btn btn-outline-primary " href="">Nuevo seguimiento</a>
-                                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Cerrar</button>
-
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
+                                </a>
+                               
                             </td>
-                        @endforeach
+                        
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

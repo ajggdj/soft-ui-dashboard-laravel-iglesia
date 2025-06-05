@@ -30,7 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('editar/{id}', [HomeController::class, 'editar'])->name('editar-list');
     Route::post('editar/guardar/{id}', [HomeController::class, 'guardar'])->name('guardar-list');
 
-    Route::get('historial-paciente', [HomeController::class, 'historial'])->name('historial-paciente');
+    Route::get('historial-paciente/{id}', [HomeController::class, 'historial'])->name('historial-paciente');
+	Route::get('historial-crear', [HomeController::class, 'historialcrear'])->name('historial-crear');
+	Route::post('historial-guardar', [HomeController::class, 'historial_guardar'])->name('historial-guardar');
 
 
 	Route::get('dashboard', function () {

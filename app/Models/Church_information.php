@@ -10,4 +10,5 @@ class Church_information extends Model
     use HasFactory;
 
     protected $table = 'church_informations';
+
 }

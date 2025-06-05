@@ -26,10 +26,10 @@ return new class extends Migration
             $table->string('acude_misa');
             $table->string('comulga_misa');
             $table->string('ultima_confecion');
-            $table->string('padecimiento_psico');
-            $table->string('medicamentos');
-            $table->string('enfermedad');
-            $table->string('embarazada');
+            $table->longText('padecimiento_psico');
+            $table->longText('medicamentos');
+            $table->longText('enfermedad');
+            $table->longText('embarazada');
             $table->boolean('brujeria');
             $table->boolean('santeria');
             $table->boolean('adivinacion');
@@ -47,8 +47,8 @@ return new class extends Migration
             $table->boolean('pendulo');
             $table->string('otro');
             $table->string('fecha_discernimiento');
-            $table->string('observaciones_discernimiento');
-            $table->string('observaciones_sacerdote');
+            $table->longText('observaciones_discernimiento');
+            $table->longText('observaciones_sacerdote');
             $table->integer('hijo')->nullable();
             $table->boolean('activo');
             $table->timestamps();

@@ -10,5 +10,6 @@ class Historial extends Model
     use HasFactory;
 
         protected $table = 'historial';
+     
 
 }

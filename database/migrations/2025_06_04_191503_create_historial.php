@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('historial', function (Blueprint $table) {
             $table->id();
             $table->integer('idinformacion');
-            $table->string('observaciones_discernimiento');
-            $table->string('observaciones_sacerdote');
+            $table->longText('padecimiento_psico');
+            $table->longText('medicamentos');
+            $table->longText('enfermedad');
+            $table->longText('embarazada');
+            $table->longText('observaciones_discernimiento');
+            $table->longText('observaciones_sacerdote');
             $table->boolean('activo');
             $table->timestamps();
         });
