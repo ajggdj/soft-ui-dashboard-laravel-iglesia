@@ -5,12 +5,24 @@ use App\Models\Church_information;
 use App\Models\historial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $church_information = Church_information::all();
+        $church_information = Church_information::where('activo',true)->get();
+        // Obtener el usuario actual
+$user = Auth::user();
+//return auth()->user()->hasRole('editor');
+// Verificar si el usuario tiene el rol 'admin'
+if (auth()->user()->hasRole('admin')) {
+    echo "El usuario tiene el rol de administrador.";
+} else {
+    echo "El usuario NO tiene el rol de administrador.";
+}
+
         return view('dashboard', compact('church_information'));
     }
 
@@ -388,7 +400,8 @@ class HomeController extends Controller
 
     public function historial($id){
         $historial = Historial::where('idinformacion',$id)->get();
-        return view('historial.listas',['historial'=> $historial]);
+        $userid = Church_information::where('id',$id)->first();
+        return view('historial.listas',['historial'=> $historial, 'userid'=>$userid]);
     }
 
     public function historialcrear($id){
@@ -432,5 +445,15 @@ class HomeController extends Controller
         $table->activo = 1;
         $table->save();
         return redirect('/');
+    }
+
+    //eliminar Activo
+    public function eliminar($id){
+        $table = Church_information::find($id);
+        $table->activo = '0';
+        $table->save();
+
+        return redirect('/');
+
     }
 }

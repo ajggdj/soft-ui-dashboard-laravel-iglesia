@@ -9,16 +9,16 @@
                         <div class="card-header pb-0">
                             <div class="d-flex flex-row justify-content-between">
                                 <div>
-                                    <h5 class="mb-0">Historial</h5>
+                                    <h5 class="mb-0">Historial </h5>
                                 </div>
-                                <a href="{{ route('historial-crear') }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nuevo
+                                <a href="{{ route('historial-crear',$userid->id) }}" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; Nuevo
                                     caso</a>
                             </div>
                             <br>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
-                                
+
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                                 @foreach ($historial as $lista )
                                 <table class="table align-items-center mb-0">
@@ -39,7 +39,7 @@
                                             <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="12">{{$lista->padecimiento_psico}}</textarea>
                                             </td>
-                                            
+
                                         </tr>
                                         <td colspan="2" class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Historial de Medicamentos</td>

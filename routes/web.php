@@ -26,12 +26,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'home'])->name('list');
     Route::get('crear', [HomeController::class, 'create'])->name('create-list');
+    Route::get('eliminar/{id}', [HomeController::class, 'eliminar'])->name('eliminar-list');
 	Route::post('registrar', [HomeController::class, 'registrar'])->name('registrar-list');
     Route::get('editar/{id}', [HomeController::class, 'editar'])->name('editar-list');
     Route::post('editar/guardar/{id}', [HomeController::class, 'guardar'])->name('guardar-list');
 
     Route::get('historial-paciente/{id}', [HomeController::class, 'historial'])->name('historial-paciente');
-	Route::get('historial-crear', [HomeController::class, 'historialcrear'])->name('historial-crear');
+	Route::get('historial-crear/{id}', [HomeController::class, 'historialcrear'])->name('historial-crear');
 	Route::post('historial-guardar', [HomeController::class, 'historial_guardar'])->name('historial-guardar');
 
 

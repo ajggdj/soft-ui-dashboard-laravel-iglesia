@@ -32,12 +32,9 @@
                   <tbody>
                     @foreach ($church_information as $key => $identificacion)
                     <tr>
-                        
+
                             <td>
                                 <div class="d-flex px-2 py-1">
-                                <div>
-                                    <img src="../assets/img/unnamed.jpg" class="avatar avatar-sm me-3" alt="user1">
-                                </div>
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-sm">{{ $identificacion->nombre }}</h6>
                                 </div>
@@ -59,14 +56,15 @@
                                 <a class="btn btn-link text-dark px-3 mb-0" href="editar/{{ $identificacion->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                <i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i> Editar
                                 </a>
+                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="{{ route('eliminar-list',$identificacion->id) }}"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Delete</a>
                             </td>
                             <td class="align-middle ">
                                 <a href="{{ route('historial-paciente',$identificacion->id) }}" class="btn btn-outline-primary mb-0">
                                     Historial
                                 </a>
-                               
+
                             </td>
-                        
+
                     </tr>
                     @endforeach
                   </tbody>
